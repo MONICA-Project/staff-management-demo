@@ -5,7 +5,7 @@ services:
   loramap:
     build:
       context: .
-    image: registry.fit.fraunhofer.de/monica/lora-map/map-project:latest
+    image: monicaproject/map-project:latest
     command: ["mono","./Lora-Map.exe"]
     ports:
       - 8080:8080

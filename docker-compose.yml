@@ -57,7 +57,7 @@ services:
       GOST_LOG_VERBOSE_FLAG: "true"
       GOST_MQTT_VERBOSE: "true"
 
-  dashboard:
+  gost-dashboard:
     image: geodan/gost-dashboard
     ports:
       - "8090:8080"
@@ -69,6 +69,7 @@ services:
     command: ["mono","./Lora-Scral.exe"]
     depends_on:
       - mosquitto
+      - scral
     volumes:
       - "./lorascral-config/settings.conf:/etc/monicascral/settings.conf"
 
@@ -78,8 +79,18 @@ services:
       - "8000:8000"
     depends_on:
       - mosquitto
-      - dashboard
-      - lorascral
+      - gost-dashboard
+      - gpsfaker1
+      - gpsfaker2
+      - gpsfaker3
+      - gpsfaker4
+      - gpsfaker5
+      - gpsfaker6
+      - gpsfaker7
+      - gpsfaker8
+      - gpsfaker9
+      - gpsfaker10
+      - gpsfaker11
     environment:
       CONFIG: "custom"
       # MODULE_NAME: "SCRAL"
@@ -91,10 +102,9 @@ services:
       PUB_BROKER_PORT: 1883
       # PUB_BROKER_KEEPALIVE: 60
       # GOST_MQTT_PREFIX: GOST/
-      # OGC_SERVER_ADDRESS: http://localhost:8080/v1.0
-      OGC_SERVER_ADDRESS: http://dashboard:8080/v1.0
+      OGC_SERVER_ADDRESS: http://gost-dashboard:8080/v1.0
       # OGC_SERVER_USER: "scral"
-      # OGC_SERVER_PASS: "A5_xYY#HqNiao_12#b"
+      # OGC_SERVER_PASS: "***"
       # LISTENING_ADDRESS: "0.0.0.0"
       # LISTENING_PORT: 8000
       VERBOSE: 1

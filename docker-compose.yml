@@ -3,8 +3,6 @@ version: '2.3'
 services:
 
   loramap:
-    build:
-      context: .
     image: monicaproject/map-project:latest
     command: ["mono","./Lora-Map.exe"]
     ports:

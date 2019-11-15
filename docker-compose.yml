@@ -1,7 +1,7 @@
 version: '2.3'
 
 services:
-  
+
   loramap:
     build:
       context: .
@@ -11,18 +11,96 @@ services:
       - 8080:8080
     depends_on:
       - mosquitto
+      - gpsfaker1
+      - gpsfaker2
+      - gpsfaker3
+      - gpsfaker4
+      - gpsfaker5
+      - gpsfaker6
+      - gpsfaker7
+      - gpsfaker8
+      - gpsfaker9
+      - gpsfaker10
+      - gpsfaker11
     volumes:
-      - "./config/requests.conf:/etc/loramap/requests.conf"
-      - "./config/settings.conf:/etc/loramap/settings.conf"
-      - "./config/maps:/usr/local/bin/loramap/resources/maps"
-      - "./config/json:/usr/local/bin/loramap/json"
+      - "./loramap-config/requests.conf:/etc/loramap/requests.conf"
+      - "./loramap-config/settings.conf:/etc/loramap/settings.conf"
+      - "./loramap-config/json:/usr/local/bin/loramap/json"
 
   mosquitto:
     image: "eclipse-mosquitto"
-#    ports:
-#      - 1883:1883
+    ports:
+      - 1883:1883
     volumes:
       - "./mosquitto.conf:/mosquitto/config/mosquitto.conf"
+
+  gost-db:
+    image: "geodan/gost-db"
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=gost
+
+  gost:
+    image: geodan/gost
+    depends_on:
+      - gost-db
+      - mosquitto
+    environment:
+      GOST_DB_HOST: gost-db
+      GOST_SERVER_EXTERNAL_URI: http://localhost:8090/
+      GOST_MQTT_HOST: mosquitto
+      GOST_MQTT_PORT: 1883
+      GOST_MQTT_CLIENTID: gost
+      GOST_MQTT_PREFIX: GOST
+      GOST_SERVER_MAX_ENTITIES: 1000
+      GOST_LOG_VERBOSE_FLAG: "true"
+      GOST_MQTT_VERBOSE: "true"
+
+  dashboard:
+    image: geodan/gost-dashboard
+    ports:
+      - "8090:8080"
+    depends_on:
+      - gost
+
+  lorascral:
+    image: monicaproject/lora-scral-project:latest
+    command: ["mono","./Lora-Scral.exe"]
+    depends_on:
+      - mosquitto
+    volumes:
+      - "./lorascral-config/settings.conf:/etc/monicascral/settings.conf"
+
+  scral:
+    image: monicaproject/scral:gps_tracker_rest
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mosquitto
+      - dashboard
+      - lorascral
+    environment:
+      CONFIG: "custom"
+      # MODULE_NAME: "SCRAL"
+      # ENDPOINT_URL: "localhost"
+      # ENDPOINT_PORT: 8000
+      # OGC_FILE: "ogc_config_gps.conf"  # ToDo: da spostare
+      # PUB_BROKER_URI: "localhost"
+      PUB_BROKER_URI: "mosquitto"
+      PUB_BROKER_PORT: 1883
+      # PUB_BROKER_KEEPALIVE: 60
+      # GOST_MQTT_PREFIX: GOST/
+      # OGC_SERVER_ADDRESS: http://localhost:8080/v1.0
+      OGC_SERVER_ADDRESS: http://dashboard:8080/v1.0
+      # OGC_SERVER_USER: "scral"
+      # OGC_SERVER_PASS: "A5_xYY#HqNiao_12#b"
+      # LISTENING_ADDRESS: "0.0.0.0"
+      # LISTENING_PORT: 8000
+      VERBOSE: 1
+      # UPDATE_INTERVAL: 60
 
   gpsfaker1:
     image: "janniswarnat/gpsd-faker"
@@ -144,3 +222,6 @@ services:
       - PUBLISH_EVERY=5
       - MQTT_URL=mqtt://mosquitto:1883
       - TRACKER_ID=IA
+
+volumes:
+  pgdata:

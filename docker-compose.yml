@@ -65,13 +65,13 @@ services:
       - gost
 
   lorascral:
-    image: monicaproject/lora-scral-project:latest
-    command: ["mono","./Lora-Scral.exe"]
+    image: monicaproject/lorascral:latest
+    command: ["dotnet","./Lora-Scral.dll"]
     depends_on:
       - mosquitto
       - scral
     volumes:
-      - "./lorascral-config/settings.conf:/etc/monicascral/settings.conf"
+      - "./lorascral-config/settings.conf:/etc/lorascral/settings.conf"
 
   scral:
     image: monicaproject/scral:gps_tracker_rest

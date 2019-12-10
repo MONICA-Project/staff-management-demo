@@ -3,8 +3,8 @@ version: '2.3'
 services:
 
   loramap:
-    image: monicaproject/map-project:latest
-    command: ["mono","./Lora-Map.exe"]
+    image: monicaproject/lora-map:latest
+    command: ["dotnet","./Lora-Map.dll"]
     ports:
       - 8080:8080
     depends_on:

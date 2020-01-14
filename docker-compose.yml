@@ -9,17 +9,6 @@ services:
       - 8080:8080
     depends_on:
       - mosquitto
-      - gpsfaker1
-      - gpsfaker2
-      - gpsfaker3
-      - gpsfaker4
-      - gpsfaker5
-      - gpsfaker6
-      - gpsfaker7
-      - gpsfaker8
-      - gpsfaker9
-      - gpsfaker10
-      - gpsfaker11
     volumes:
       - "./loramap-config/requests.conf:/etc/loramap/requests.conf"
       - "./loramap-config/settings.conf:/etc/loramap/settings.conf"
@@ -80,17 +69,6 @@ services:
     depends_on:
       - mosquitto
       - gost-dashboard
-      - gpsfaker1
-      - gpsfaker2
-      - gpsfaker3
-      - gpsfaker4
-      - gpsfaker5
-      - gpsfaker6
-      - gpsfaker7
-      - gpsfaker8
-      - gpsfaker9
-      - gpsfaker10
-      - gpsfaker11
     environment:
       CONFIG: "custom"
       # MODULE_NAME: "SCRAL"

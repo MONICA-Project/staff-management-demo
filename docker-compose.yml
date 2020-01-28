@@ -88,7 +88,7 @@ services:
       VERBOSE: 1
       # UPDATE_INTERVAL: 60
 
-  gpsfaker1:
+  gpsfaker:
     image: "janniswarnat/gpsd-faker"
     depends_on:
       - mosquitto
@@ -97,117 +97,8 @@ services:
     environment:
       - PUBLISH_EVERY=5
       - MQTT_URL=mqtt://mosquitto:1883
-      - TRACKER_ID=XV
-
-  gpsfaker2:
-    image: "janniswarnat/gpsd-faker"
-    depends_on:
-      - mosquitto
-    volumes:
-      - ./config.json:/gpsd-faker/config.json
-    environment:
-      - PUBLISH_EVERY=5
-      - MQTT_URL=mqtt://mosquitto:1883
-      - TRACKER_ID=XW
-
-  gpsfaker3:
-    image: "janniswarnat/gpsd-faker"
-    depends_on:
-      - mosquitto
-    volumes:
-      - ./config.json:/gpsd-faker/config.json
-    environment:
-      - PUBLISH_EVERY=5
-      - MQTT_URL=mqtt://mosquitto:1883
-      - TRACKER_ID=XX
-
-  gpsfaker4:
-    image: "janniswarnat/gpsd-faker"
-    depends_on:
-      - mosquitto
-    volumes:
-      - ./config.json:/gpsd-faker/config.json
-    environment:
-      - PUBLISH_EVERY=5
-      - MQTT_URL=mqtt://mosquitto:1883
-      - TRACKER_ID=XY
-
-  gpsfaker5:
-    image: "janniswarnat/gpsd-faker"
-    depends_on:
-      - mosquitto
-    volumes:
-      - ./config.json:/gpsd-faker/config.json
-    environment:
-      - PUBLISH_EVERY=5
-      - MQTT_URL=mqtt://mosquitto:1883
-      - TRACKER_ID=XZ
-
-  gpsfaker6:
-    image: "janniswarnat/gpsd-faker"
-    depends_on:
-      - mosquitto
-    volumes:
-      - ./config.json:/gpsd-faker/config.json
-    environment:
-      - PUBLISH_EVERY=5
-      - MQTT_URL=mqtt://mosquitto:1883
-      - TRACKER_ID=XA
-
-  gpsfaker7:
-    image: "janniswarnat/gpsd-faker"
-    depends_on:
-      - mosquitto
-    volumes:
-      - ./config.json:/gpsd-faker/config.json
-    environment:
-      - PUBLISH_EVERY=5
-      - MQTT_URL=mqtt://mosquitto:1883
-      - TRACKER_ID=XB
-
-  gpsfaker8:
-    image: "janniswarnat/gpsd-faker"
-    depends_on:
-      - mosquitto
-    volumes:
-      - ./config.json:/gpsd-faker/config.json
-    environment:
-      - PUBLISH_EVERY=5
-      - MQTT_URL=mqtt://mosquitto:1883
-      - TRACKER_ID=XC
-
-  gpsfaker9:
-    image: "janniswarnat/gpsd-faker"
-    depends_on:
-      - mosquitto
-    volumes:
-      - ./config.json:/gpsd-faker/config.json
-    environment:
-      - PUBLISH_EVERY=5
-      - MQTT_URL=mqtt://mosquitto:1883
-      - TRACKER_ID=XD
-
-  gpsfaker10:
-    image: "janniswarnat/gpsd-faker"
-    depends_on:
-      - mosquitto
-    volumes:
-      - ./config.json:/gpsd-faker/config.json
-    environment:
-      - PUBLISH_EVERY=5
-      - MQTT_URL=mqtt://mosquitto:1883
-      - TRACKER_ID=XE
-
-  gpsfaker11:
-    image: "janniswarnat/gpsd-faker"
-    depends_on:
-      - mosquitto
-    volumes:
-      - ./config.json:/gpsd-faker/config.json
-    environment:
-      - PUBLISH_EVERY=5
-      - MQTT_URL=mqtt://mosquitto:1883
-      - TRACKER_ID=IA
+      - TRACKER_IDS=XV,XW,XX,XY,XZ,XA,XB,XC,XD,XE,IA
 
 volumes:
   pgdata:
+

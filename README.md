@@ -24,29 +24,19 @@ docker-compose up -d scral
 
 Check if SCRAL is up and running at http://localhost:8000/scral/v1.0/gps-tracker-gw.
 
-Start the service to register the GPS fakers (see below) with SCRAL:
+Start the service to register the GPS dummies (see below) with SCRAL:
 
 ```bash
 docker-compose up -d lorascral
 ```
 
-Start up as many fakers as you like (up to 11). Please start them one after another to workaround an overloading issue that is still being analyzed:
+Start up the GPS dummies:
 
 ```bash
-docker-compose up -d gpsfaker1
-docker-compose up -d gpsfaker2
-docker-compose up -d gpsfaker3
-docker-compose up -d gpsfaker4
-docker-compose up -d gpsfaker5
-docker-compose up -d gpsfaker6
-docker-compose up -d gpsfaker7
-docker-compose up -d gpsfaker8
-docker-compose up -d gpsfaker9
-docker-compose up -d gpsfaker10
-docker-compose up -d gpsfaker11
+docker-compose up -d gpsfaker
 ```
 
-The fakers should now be registered with SCRAL at http://localhost:8000/scral/v1.0/gps-tracker-gw/active-devices.
+The dummies should now be registered with SCRAL at http://localhost:8000/scral/v1.0/gps-tracker-gw/active-devices.
 
 Observations (both localizations and - from time to time - alerts) should start coming in to GOST, visible in the dashboard at http://localhost:8090/#/observations or directly via the API at http://localhost:8090/v1.0/Observations.
 

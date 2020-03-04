@@ -21,7 +21,7 @@ This repository is a working docker compose example of whole MONICA toolchain, f
 
 ### Installation and execution
 Clone or download and unzip this repository to a folder on your local computer. Open a command console window and change it to the newly created folder.
-The first time this system is started it is best to do it stepwise to identify any problems of already occupied network ports by following this order: 
+The first time this system is started it is best to do it stepwise to identify any problems of already occupied network ports by following this order (Used nwtwork ports are found at the end): 
 
 #### 1, Start the situation map: 
 
@@ -29,10 +29,10 @@ The first time this system is started it is best to do it stepwise to identify a
 docker-compose up -d loramap
 ```
 
-Go to http://localhost:8080 to see the location map for the event "Pützchens Markt" in Bonn.
-![General MONICA Architecture](https://github.com/MONICA-Project/HLDFAD_SourceCode/blob/master/WP6BreakdownDiagram.png "General Monica Architecture") 
+Go to http://localhost:8080 to see the LORA Map for the event "Pützchens Markt" in Bonn.
+![LORA Map](https://github.com/MONICA-Project/staff-management-demo/img/FitCop.PNG "LORA Map") 
 
-Start up a GOST server:
+#### 2, Start up a GOST server:
 
 ```bash
 docker-compose up -d gost-dashboard
@@ -40,7 +40,11 @@ docker-compose up -d gost-dashboard
 
 The GOST backend Postgres database takes a few seconds to start up. Make sure that the GOST API is available at http://localhost:8090/v1.0.
 
-Start up SCRAL:
+![IoT Database](https://github.com/MONICA-Project/staff-management-demo/img/IoT%20DB.PNG "GOST") 
+
+
+
+#### 3, Start up SCRAL:
 
 ```bash
 docker-compose up -d scral
@@ -48,17 +52,52 @@ docker-compose up -d scral
 
 Check if SCRAL is up and running at http://localhost:8000/scral/v1.0/gps-tracker-gw.
 
+![SCRAL](https://github.com/MONICA-Project/staff-management-demo/img/Scral.PNG "SCRAL") 
+
+#### 4, Start the COP API
+Start the service to register the GPS dummies (see below) with SCRAL:
+
+```bash
+docker-compose up -d copapi
+```
+
+Check if COP API is up and running at http://localhost:8800/
+
+![COP API](https://github.com/MONICA-Project/staff-management-demo/img/MONICA%20Cop%20API.PNG "COP API") 
+
+
+#### 4, Start the COP UI
+Start the service to register the GPS dummies (see below) with SCRAL:
+
+```bash
+docker-compose up -d copui
+```
+
+Check if COP API is up and running at http://localhost:8900/
+
+![COP UI](https://github.com/MONICA-Project/staff-management-demo/img/CNet%20Cop.PNG "COP UI") 
+
+
+#### 5, Start the SCRAL
 Start the service to register the GPS dummies (see below) with SCRAL:
 
 ```bash
 docker-compose up -d lorascral
 ```
-
+#### 6, Start the simulation dummies
 Start up the GPS dummies:
 
 ```bash
 docker-compose up -d gpsfaker
 ```
+
+#### 8, Next start
+If all went well the next time you can make 
+```bash
+docker-compose up -d lorascral
+```
+Which will bring up the whole environment immediately.
+
 
 The dummies should now be registered with SCRAL at http://localhost:8000/scral/v1.0/gps-tracker-gw/active-devices.
 

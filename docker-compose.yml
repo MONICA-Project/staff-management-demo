@@ -146,6 +146,7 @@ services:
       - mosquitto
       - gost
       - copapi
+      - copupdater
     environment:
       - CONNECTION_STR=Host=copdb;Database=monica_pm2019;Username=postgres;Password=postgres;Port=5432
       - GOST_PREFIX=GOST

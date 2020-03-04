@@ -30,7 +30,7 @@ docker-compose up -d loramap
 ```
 
 Go to http://localhost:8080 to see the LORA Map for the event "Pützchens Markt" in Bonn.
-![LORA Map](https://github.com/MONICA-Project/staff-management-demo/img/FitCop.PNG "LORA Map") 
+![LORA Map](https://github.com/MONICA-Project/staff-management-demo/blob/master/img/FitCop.PNG "LORA Map") 
 
 #### 2, Start up a GOST server:
 
@@ -40,7 +40,7 @@ docker-compose up -d gost-dashboard
 
 The GOST backend Postgres database takes a few seconds to start up. Make sure that the GOST API is available at http://localhost:8090/v1.0.
 
-![IoT Database](https://github.com/MONICA-Project/staff-management-demo/img/IoT%20DB.PNG "GOST") 
+![IoT Database](https://github.com/MONICA-Project/staff-management-demo/blob/master/img/IoT%20DB.PNG "GOST") 
 
 
 
@@ -52,7 +52,7 @@ docker-compose up -d scral
 
 Check if SCRAL is up and running at http://localhost:8000/scral/v1.0/gps-tracker-gw.
 
-![SCRAL](https://github.com/MONICA-Project/staff-management-demo/img/Scral.PNG "SCRAL") 
+![SCRAL](https://github.com/MONICA-Project/staff-management-demo/blob/master/img/Scral.PNG "SCRAL") 
 
 #### 4, Start the COP API
 Start the service to register the GPS dummies (see below) with SCRAL:
@@ -63,7 +63,7 @@ docker-compose up -d copapi
 
 Check if COP API is up and running at http://localhost:8800/
 
-![COP API](https://github.com/MONICA-Project/staff-management-demo/img/MONICA%20Cop%20API.PNG "COP API") 
+![COP API](https://github.com/MONICA-Project/staff-management-demo/blob/master/img/MONICA%20Cop%20API.PNG "COP API") 
 
 
 #### 4, Start the COP UI
@@ -75,7 +75,7 @@ docker-compose up -d copui
 
 Check if COP API is up and running at http://localhost:8900/
 
-![COP UI](https://github.com/MONICA-Project/staff-management-demo/img/CNet%20Cop.PNG "COP UI") 
+![COP UI](https://github.com/MONICA-Project/staff-management-demo/blob/master/img/CNet%20Cop.PNG "COP UI") 
 
 
 #### 5, Start the SCRAL

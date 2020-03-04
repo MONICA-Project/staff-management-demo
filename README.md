@@ -94,7 +94,7 @@ docker-compose up -d gpsfaker
 #### 7, Next start
 If all went well the next time you can make 
 ```bash
-docker-compose up -d lorascral
+docker-compose up -d
 ```
 Which will bring up the whole environment immediately.
 

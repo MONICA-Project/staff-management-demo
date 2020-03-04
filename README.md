@@ -91,7 +91,7 @@ Start up the GPS dummies:
 docker-compose up -d gpsfaker
 ```
 
-#### 8, Next start
+#### 7, Next start
 If all went well the next time you can make 
 ```bash
 docker-compose up -d lorascral
@@ -104,6 +104,28 @@ The dummies should now be registered with SCRAL at http://localhost:8000/scral/v
 Observations (both localizations and - from time to time - alerts) should start coming in to GOST, visible in the dashboard at http://localhost:8090/#/observations or directly via the API at http://localhost:8090/v1.0/Observations.
 
 On the location map you will now see some moving fake staffers in the event area. The panic buttons will be pressed from time to time and you will see these as alerts, visualized as red rectangles around the icons.
+
+### Trouble shooting
+The most likely problem that is encountered is port conflicts. If a container cannot start because of conflicting ports, stop or move the conflicting ports process and restart. The next section contains the port used by the components.
+If something stops working the best solution is to restart everything again.
+### TCP Ports used
+
+The following table show the list of services with opened ports (inside subnet and forward to external connections):
+
+| Service Name | Type Port | External Port | Internal Subnet Port |
+| --------------- | --------------- | --------------- | --------------- |
+| copui | Service | 8900 | 8080 | 
+| copapi | Service | 8800 | 80 | 
+| copupdater | Service | - | - | 
+| copdb | Service (PostgresSQL database)| 9998 | 5432| 
+| mosquitto | Service | 1883 | 1883| 
+| dashboard | GOST API Service | 8090 | 8080|
+| gost-db | GOST Database | 5432 | 5432|
+| loramap | Map Service | 8080 | 8080|
+| lorascral | Service | 8000 | 8000|
+| scral | Service | 8000 | 8000 | 
+| gpsfaker | Service | - | - |
+
 
 
 ## Affiliation

@@ -100,7 +100,7 @@ services:
       - TRACKER_IDS=XV,XW,XX,XY,XZ,XA,XB,XC,XD,XE,IA
 
   copdb:
-    image: "papadum/testdb:0.1"
+    image: "monicaproject/example-databases:TrackerCOPExample"
     ports:
       - "9998:5432"
   copapi:
@@ -121,7 +121,7 @@ services:
       - URL_PREFIX=
       - ASPNETCORE_ENVIRONMENT=Development
   copupdater:
-    image: "monicaproject/copupdater:0.2"
+    image: "monicaproject/copupdater:0.5"
     depends_on:
       - mosquitto
       - gost
@@ -139,7 +139,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - signalR=true
   copui:
-    image: "monicaproject/monica-cop:1.3"
+    image: "monicaproject/monica-cop-examples:staff"
     ports:
       - "8900:8080"
     depends_on:

@@ -55,7 +55,7 @@ Check if SCRAL is up and running at http://localhost:8000/scral/v1.0/gps-tracker
 ![SCRAL](https://github.com/MONICA-Project/staff-management-demo/blob/master/img/Scral.PNG "SCRAL") 
 
 #### 4, Start the COP API
-Start the service to register the GPS dummies (see below) with SCRAL:
+Start the service to launch the COP API:
 
 ```bash
 docker-compose up -d copapi
@@ -67,13 +67,13 @@ Check if COP API is up and running at http://localhost:8800/
 
 
 #### 4, Start the COP UI
-Start the service to register the GPS dummies (see below) with SCRAL:
+Start the service for the COP UI:
 
 ```bash
 docker-compose up -d copui
 ```
 
-Check if COP API is up and running at http://localhost:8900/
+Check if COP UI is up and running at http://localhost:8900/
 
 ![COP UI](https://github.com/MONICA-Project/staff-management-demo/blob/master/img/CNet%20Cop.PNG "COP UI") 
 

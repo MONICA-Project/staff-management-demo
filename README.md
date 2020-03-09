@@ -74,6 +74,7 @@ docker-compose up -d copui
 ```
 
 Check if COP UI is up and running at http://localhost:8900/
+*NB!* the userid is admin@monica-cop.com and the password PM2019!
 
 ![COP UI](https://github.com/MONICA-Project/staff-management-demo/blob/master/img/CNet%20Cop.PNG "COP UI") 
 

@@ -128,7 +128,11 @@ The following table show the list of services with opened ports (inside subnet a
 | scral | Service | 8000 | 8000 | 
 | gpsfaker | Service | - | - |
 
-
+### Tutorials based on this demo
+The following tutorials use this demo as starting point:
+- [COP UI Tutorial for staff tracking](https://monica-project.github.io/sections/cop-ui-tutorial.html)
+- [COP API Tutorial creating POIs and Zones](https://monica-project.github.io/sections/cop-api-tutorial.html)
+- [IoT-DB Tutorial simple querying](https://monica-project.github.io/sections/iot-db-tutorial.html)
 
 ## Affiliation
 ![MONICA](https://github.com/MONICA-Project/template/raw/master/monica.png)  
